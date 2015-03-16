@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rcam</title>
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+		<meta name="HandheldFriendly" content="True"/>
+		<meta http-equiv="Cache-Control" content="no-cache"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="logo">
+				<a href="index.html">
+					<img src="assets/images/rcam_logo.svg">
+				</a>
+			</div>
+			<div class="contact_form">
+				<div id="success_messages" style="display: none">
+					<div class="success-body">
+            <h5><span>Спасибо!</span> <p>Мы свяжемся с вами по указанному e-mail или телефону в течение 24 часов<p></h5>
+          </div>
+				</div>
+				<div class="link"  style="display: none">
+					<h3><a href="http://rcam.by">Посетите сайт Rcam</a></h3>
+				</div>
+				<form id="myForm">
+				  <div class="form-group">
+				    <input type="text" class="form-control" placeholder="Как вас зовут?" id="name">
+				  </div>
+				  <div class="form-group">
+				    <input type="text" class="form-control" placeholder="Ваш email или телефон" id="email">
+				  </div>
+				  <div class="form-group">
+				    <textarea class="form-control textarea" placeholder="Ваше сообщение..." id="message"></textarea>
+				  </div>
+				  <div class="contact_block">
+						<button type="submit" class="btn btn-primary" >Отправить</button>
+					</div>
+				</form>	
+			</div>
+			<p style="text-align: center">Мы свяжемся с вами по email или телефону, который вы оставили, в ближайшее 48 часов</p>
+			<div class="footer">
+				<p>Rstudio Wisdom Technologies Ltd.</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="assets/js/jquery-1.11.2.min.js"></script>
+		<script src="assets/js/jquery.form.js"></script> 
+		<script type="text/javascript">
+      $(document).ready(function() {
+      	$('.btn').click(function(event){
+      		event.preventDefault()
+      		var data = $("#myForm").serialize();
+/*
+					var AUTH_API_TOKEN_PARAMS = { auth_api_token: "43-iAQ6VWV5RVCwVAfNeqi2PCn4acina9vAOuvyffrX" };
+
+					var taskParams = {
+						name:  $('#name').val(),
+						email: $('#email').val(),
+						body:  $('#message').val()
+					}
+
+*/
+
+				$.post('http://rpanel.org/public/api.php?path_info=projects/94/tasks/add&auth_api_token=43-iAQ6VWV5RVCwVAfNeqi2PCn4acina9vAOuvyffrX&format=json', { task: { name: $('#name').val(), body: $('#message').val(), email: $('#email').val(), category_id: 777, label_id: 2}, submitted: 'submitted' }, function(response) { debugger; }, function(error) { debugger; } )
+      	})
+      });
+		</script>
+		<!-- Yandex.Metrika counter -->
+		<script type="text/javascript">
+		(function (d, w, c) {
+		    (w[c] = w[c] || []).push(function() {
+		        try {
+		            w.yaCounter29015855 = new Ya.Metrika({id:29015855,
+		                    webvisor:true,
+		                    clickmap:true,
+		                    trackLinks:true,
+		                    accurateTrackBounce:true});
+		        } catch(e) { }
+		    });
+
+		    var n = d.getElementsByTagName("script")[0],
+		        s = d.createElement("script"),
+		        f = function () { n.parentNode.insertBefore(s, n); };
+		    s.type = "text/javascript";
+		    s.async = true;
+		    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+		    if (w.opera == "[object Opera]") {
+		        d.addEventListener("DOMContentLoaded", f, false);
+		    } else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+		</script>
+		<noscript><div><img src="//mc.yandex.ru/watch/29015855" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+	</body>
+</html>
